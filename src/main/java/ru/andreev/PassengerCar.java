@@ -15,6 +15,7 @@ public class PassengerCar {
 private WebDriver driver;
 private String result;
 
+//Задаем вебэлементы
 @FindBy(css="div.IndexSelector__sections > span > label:nth-child(2) > button > span > span")
 private WebElement newCars;
 
@@ -24,21 +25,23 @@ private WebElement volkswagenCars;
 @FindBy(id = "popularMMM")
 private WebElement resultTable;
 
+//Конструктор
     public PassengerCar(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
-
+//Выбираем новые автомобили
     public PassengerCar selectNewCars(){
         newCars.click();
         return this;
     }
-
+    //Выбираем марку Фольксваген
     public PassengerCar selectVolkswagenCars(){
         volkswagenCars.click();
         return this;
     }
 
+    //Получаем данные и записываем их в таблицу
     public PassengerCar getResult(int waitingTime){
         WebDriverWait wait = new WebDriverWait(driver, waitingTime);
 
@@ -47,6 +50,7 @@ private WebElement resultTable;
         return this;
     }
 
+    //Проверяем, что объявлений по продаже нужной модели больше определенного (число задает пользователь)
     public  boolean checkResult(String carModel, int quantity){
         int factCarQuantity;
         String[] model = result.split("\n");

@@ -12,7 +12,7 @@ public class AutoTest {
 
     @BeforeEach
     public void setUpAndOpen(){
-        Settings settings = new Settings(Browser.CHROME);
+        Settings settings = new Settings(Browser.CHROME);//Выбираем браузер для тестирования
         driver = settings.getDriver();
         driver.get("https://www.auto.ru");
     }
@@ -25,13 +25,14 @@ public class AutoTest {
     public void passengerCarTest() {
 
 
-                boolean testResult = new PassengerCar(driver)
-                .selectNewCars()
-                .selectVolkswagenCars()
-                .getResult(5)
-                .checkResult("Caravelle",10);
+                boolean testResult = new PassengerCar(driver) //Создаем объект класса легковой а/м
+                .selectNewCars() //Выбираем новые автомобили
+                .selectVolkswagenCars() //выбираем марку
+                .getResult(5) //ждем результатов в течение 5 секунд
+                .checkResult("Caravelle",10); //Задаем модель машины и минимальное кол-во
+                                                            // объявлений, которые есть по этой модели
 
-                assertTrue(testResult);
+                assertTrue(testResult); //если объявлений больше, то тест пройден
 
     }
 }

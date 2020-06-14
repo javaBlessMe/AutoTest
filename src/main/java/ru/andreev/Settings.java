@@ -15,9 +15,11 @@ import java.util.List;
 public class Settings {
         private Browser browser;
         private WebDriver driver;
+        //Задаем входные параметры браузера
         private List<String> browsersSettings =
                new ArrayList<>(Arrays.asList("start-maximized","--disable-notifications","--disable-popup-blocking"));
 
+        //метод, который выбирает браузер
     public  Settings(Browser browser) {
         this.browser = browser;
         if(browser==Browser.CHROME){
